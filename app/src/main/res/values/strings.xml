@@ -1,3 +1,9 @@
 <resources>
+
     <string name="app_name">NavigationResultSample</string>
+
+    <string name="general_login_text">Login</string>
+    <string name="general_username_text">Username</string>
+    <string name="general_password_text">Password</string>
+
 </resources>

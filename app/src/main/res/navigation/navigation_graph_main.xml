@@ -7,6 +7,14 @@
 
     <fragment
         android:id="@+id/fragment_a"
-        android:name="com.phelat.navigationresultsample.FragmentA" />
+        android:name="com.phelat.navigationresultsample.FragmentA">
+        <action
+            android:id="@+id/a_to_b"
+            app:destination="@id/fragment_b" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_b"
+        android:name="com.phelat.navigationresultsample.FragmentB" />
 
 </navigation>
