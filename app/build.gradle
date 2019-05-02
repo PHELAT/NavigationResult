@@ -31,4 +31,7 @@ dependencies {
 
     implementation project(":navigationresult")
 
+    implementation "androidx.navigation:navigation-fragment:2.0.0"
+    implementation "androidx.navigation:navigation-ui:2.0.0"
+
 }
