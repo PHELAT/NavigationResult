@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.phelat.navigationresult.BundleFragment
 import kotlinx.android.synthetic.main.fragment_a.*
 
-class FragmentA : Fragment() {
+class FragmentA : BundleFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -19,6 +19,10 @@ class FragmentA : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loginButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.a_to_b))
+    }
+
+    override fun onFragmentResult(resultCode: Int, bundle: Bundle) {
+        println(bundle.getBoolean(FragmentB.IS_LOGIN_SUCCESSFUL, false))
     }
 
 }

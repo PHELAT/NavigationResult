@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
+import com.phelat.navigationresult.navigateUp
 import kotlinx.android.synthetic.main.fragment_b.*
 
 class FragmentB : Fragment() {
@@ -24,7 +24,9 @@ class FragmentB : Fragment() {
 
     private fun onLoginButtonClicked(view: View) {
         if (isUsernameAndPasswordValid()) {
-            findNavController().navigateUp()
+            navigateUp(Bundle().apply {
+                putBoolean(IS_LOGIN_SUCCESSFUL, true)
+            })
         } else {
             Snackbar.make(
                 view,
@@ -38,6 +40,10 @@ class FragmentB : Fragment() {
         val username = usernameInput.text.toString()
         val password = passwordInput.text.toString()
         return username == "admin" && password == "1234"
+    }
+
+    companion object {
+        const val IS_LOGIN_SUCCESSFUL = "isLoginSuccessful"
     }
 
 }
