@@ -6,4 +6,6 @@
     <string name="general_username_text">Username</string>
     <string name="general_password_text">Password</string>
 
+    <string name="general_wrong_login_credentials_message">Username or Password is wrong!</string>
+
 </resources>
