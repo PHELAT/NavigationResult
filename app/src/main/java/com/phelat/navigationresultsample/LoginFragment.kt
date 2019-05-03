@@ -7,15 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.phelat.navigationresult.navigateUp
-import kotlinx.android.synthetic.main.fragment_b.*
+import kotlinx.android.synthetic.main.login_fragment.*
 
-class FragmentB : Fragment() {
+class LoginFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_b, container, false)
+    ): View? = inflater.inflate(R.layout.login_fragment, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -24,7 +24,7 @@ class FragmentB : Fragment() {
 
     private fun onLoginButtonClicked(view: View) {
         if (isUsernameAndPasswordValid()) {
-            navigateUp(Bundle().apply {
+            navigateUp(IntroFragment.LOGIN_RESULT_CODE, Bundle().apply {
                 putBoolean(IS_LOGIN_SUCCESSFUL, true)
             })
         } else {

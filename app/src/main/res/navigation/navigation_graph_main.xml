@@ -3,18 +3,33 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/navigation_graph_main"
-    app:startDestination="@id/fragment_a">
+    app:startDestination="@id/intro_fragment">
 
     <fragment
-        android:id="@+id/fragment_a"
-        android:name="com.phelat.navigationresultsample.FragmentA">
+        android:id="@+id/intro_fragment"
+        android:name="com.phelat.navigationresultsample.IntroFragment">
         <action
-            android:id="@+id/a_to_b"
-            app:destination="@id/fragment_b" />
+            android:id="@+id/intro_to_login"
+            app:destination="@id/login_fragment">
+            <argument
+                android:name="fragment:resultCode"
+                app:argType="integer" />
+        </action>
+        <action
+            android:id="@+id/intro_to_register"
+            app:destination="@id/register_fragment">
+            <argument
+                android:name="fragment:resultCode"
+                app:argType="integer" />
+        </action>
     </fragment>
 
     <fragment
-        android:id="@+id/fragment_b"
-        android:name="com.phelat.navigationresultsample.FragmentB" />
+        android:id="@+id/login_fragment"
+        android:name="com.phelat.navigationresultsample.LoginFragment" />
+
+    <fragment
+        android:id="@+id/register_fragment"
+        android:name="com.phelat.navigationresultsample.RegisterFragment" />
 
 </navigation>

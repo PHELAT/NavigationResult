@@ -3,9 +3,13 @@
     <string name="app_name">NavigationResultSample</string>
 
     <string name="general_login_text">Login</string>
+    <string name="general_register_text">Register</string>
     <string name="general_username_text">Username</string>
     <string name="general_password_text">Password</string>
+    <string name="general_or_text">or</string>
 
+    <string name="general_login_success_message">You have logged in</string>
+    <string name="general_register_success_message">You have registered successfully</string>
     <string name="general_wrong_login_credentials_message">Username or Password is wrong!</string>
 
 </resources>
