@@ -17,11 +17,7 @@
         </action>
         <action
             android:id="@+id/intro_to_register"
-            app:destination="@id/register_fragment">
-            <argument
-                android:name="fragment:resultCode"
-                app:argType="integer" />
-        </action>
+            app:destination="@id/register_fragment" />
     </fragment>
 
     <fragment

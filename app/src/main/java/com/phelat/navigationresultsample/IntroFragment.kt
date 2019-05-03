@@ -21,7 +21,7 @@ class IntroFragment : BundleFragment() {
             navigate(IntroFragmentDirections.introToLogin(LOGIN_RESULT_CODE))
         }
         registerButton.setOnClickListener {
-            navigate(IntroFragmentDirections.introToRegister(REGISTER_RESULT_CODE))
+            navigate(IntroFragmentDirections.introToRegister(), REGISTER_RESULT_CODE)
         }
     }
 

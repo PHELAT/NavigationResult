@@ -11,8 +11,13 @@ abstract class BundleFragment : Fragment() {
 
     open fun onFragmentResult(resultCode: Int, bundle: Bundle) {}
 
-    fun navigate(navDirection: NavDirections) {
-        pendingResult = navDirection.arguments.getInt("fragment:resultCode", -1)
+    fun navigate(navDirection: NavDirections, resultCode: Int = -1) {
+        pendingResult = if (resultCode > -1) {
+            navDirection.arguments.putInt("fragment:resultCode", resultCode)
+            resultCode
+        } else {
+            navDirection.arguments.getInt("fragment:resultCode", -1)
+        }
         findNavController().navigate(navDirection)
     }
 
