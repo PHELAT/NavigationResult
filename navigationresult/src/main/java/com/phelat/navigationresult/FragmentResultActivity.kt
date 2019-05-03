@@ -1,6 +1,7 @@
 package com.phelat.navigationresult
 
 import android.os.Bundle
+import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
@@ -55,18 +56,39 @@ abstract class FragmentResultActivity : AppCompatActivity() {
         pendingResults[resultCode] = bundle
     }
 
+    fun updateNavHostFragmentId(@IdRes id: Int) {
+        navHostFragmentIdCache = id
+        reattach()
+    }
+
+    private fun reattach() {
+        detachBackStackChangeListener()
+        detachDestinationChangeListener()
+        attachBackStackChangeListener()
+        attachDestinationChangeListener()
+    }
+
     override fun onStop() {
         super.onStop()
+        detachBackStackChangeListener()
+        detachDestinationChangeListener()
+    }
+
+    private fun detachBackStackChangeListener() {
         backStackChangeListener?.let {
             supportFragmentManager?.findFragmentById(navHostFragmentIdCache)
                 ?.childFragmentManager
                 ?.removeOnBackStackChangedListener(it)
         }
+    }
+
+    private fun detachDestinationChangeListener() {
         destinationChangeListener?.let {
             findNavController(navHostFragmentIdCache).removeOnDestinationChangedListener(it)
         }
     }
 
+    @IdRes
     abstract fun getNavHostFragmentId(): Int
 
 }
