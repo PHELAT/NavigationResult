@@ -1,6 +1,11 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
+ext {
+    repoName = 'NavigationResult'
+    artifactId = 'navigationresult'
+}
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -27,3 +32,6 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:2.0.0"
 
 }
+
+apply from: "$rootDir/bintray/install-bintray.gradle"
+apply from: "$rootDir/bintray/config-bintray.gradle"

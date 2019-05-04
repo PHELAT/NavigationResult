@@ -1,0 +1,39 @@
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = 'com.phelat'
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                groupId 'com.phelat'
+                artifactId project.artifactId
+
+                name project.repoName
+                url 'https://github.com/PHELAT/NavigationResult'
+
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'm4hdi'
+                        name 'Mahdi Nouri'
+                        email 'm4hdi.pdroid@gmail.com'
+                    }
+                }
+
+                scm {
+                    connection 'https://github.com/PHELAT/NavigationResult.git'
+                    developerConnection 'https://github.com/PHELAT/NavigationResult.git'
+                    url 'https://github.com/PHELAT/NavigationResult'
+                }
+            }
+        }
+    }
+}
