@@ -44,7 +44,7 @@ abstract class FragmentResultActivity : AppCompatActivity() {
                 ?.also {
                     it.onFragmentResult(it.pendingRequest, pendingRequests[it.pendingRequest]!!)
                 }
-                ?.also { pendingRequests[it.pendingRequest] = null }
+                ?.also { pendingRequests.remove(it.pendingRequest) }
         }.also {
             supportFragmentManager?.findFragmentById(navHostFragmentIdCache)
                 ?.childFragmentManager
