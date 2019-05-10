@@ -19,7 +19,7 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         registerButton.setOnClickListener {
-            navigateUp(IntroFragment.REGISTER_RESULT_CODE, Bundle().apply {
+            navigateUp(IntroFragment.REGISTER_REQUEST_CODE, Bundle().apply {
                 putBoolean(IS_REGISTER_SUCCESSFUL, true)
             })
         }

@@ -18,21 +18,21 @@ class IntroFragment : BundleFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loginButton.setOnClickListener {
-            navigate(IntroFragmentDirections.introToLogin(LOGIN_RESULT_CODE))
+            navigate(IntroFragmentDirections.introToLogin(LOGIN_REQUEST_CODE))
         }
         registerButton.setOnClickListener {
-            navigate(IntroFragmentDirections.introToRegister(), REGISTER_RESULT_CODE)
+            navigate(IntroFragmentDirections.introToRegister(), REGISTER_REQUEST_CODE)
         }
     }
 
-    override fun onFragmentResult(resultCode: Int, bundle: Bundle) {
-        when (resultCode) {
-            LOGIN_RESULT_CODE -> {
+    override fun onFragmentResult(requestCode: Int, bundle: Bundle) {
+        when (requestCode) {
+            LOGIN_REQUEST_CODE -> {
                 introPage.visibility = View.INVISIBLE
                 userPanelPage.visibility = View.VISIBLE
                 panelMessage.setText(R.string.general_login_success_message)
             }
-            REGISTER_RESULT_CODE -> {
+            REGISTER_REQUEST_CODE -> {
                 introPage.visibility = View.INVISIBLE
                 userPanelPage.visibility = View.VISIBLE
                 panelMessage.setText(R.string.general_register_success_message)
@@ -41,8 +41,8 @@ class IntroFragment : BundleFragment() {
     }
 
     companion object {
-        const val LOGIN_RESULT_CODE = 1
-        const val REGISTER_RESULT_CODE = 2
+        const val LOGIN_REQUEST_CODE = 1
+        const val REGISTER_REQUEST_CODE = 2
     }
 
 }

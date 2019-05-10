@@ -12,7 +12,7 @@
             android:id="@+id/intro_to_login"
             app:destination="@id/login_fragment">
             <argument
-                android:name="fragment:resultCode"
+                android:name="fragment:requestCode"
                 app:argType="integer" />
         </action>
         <action

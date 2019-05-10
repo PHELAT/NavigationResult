@@ -24,7 +24,7 @@ class LoginFragment : Fragment() {
 
     private fun onLoginButtonClicked(view: View) {
         if (isUsernameAndPasswordValid()) {
-            navigateUp(IntroFragment.LOGIN_RESULT_CODE, Bundle().apply {
+            navigateUp(IntroFragment.LOGIN_REQUEST_CODE, Bundle().apply {
                 putBoolean(IS_LOGIN_SUCCESSFUL, true)
             })
         } else {

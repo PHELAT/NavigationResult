@@ -7,16 +7,16 @@ import androidx.navigation.fragment.findNavController
 
 abstract class BundleFragment : Fragment() {
 
-    var pendingResult: Int = -1
+    var pendingRequest: Int = -1
 
-    open fun onFragmentResult(resultCode: Int, bundle: Bundle) {}
+    open fun onFragmentResult(requestCode: Int, bundle: Bundle) {}
 
-    fun navigate(navDirection: NavDirections, resultCode: Int = -1) {
-        pendingResult = if (resultCode > -1) {
-            navDirection.arguments.putInt("fragment:resultCode", resultCode)
-            resultCode
+    fun navigate(navDirection: NavDirections, requestCode: Int = -1) {
+        pendingRequest = if (requestCode > -1) {
+            navDirection.arguments.putInt("fragment:requestCode", requestCode)
+            requestCode
         } else {
-            navDirection.arguments.getInt("fragment:resultCode", -1)
+            navDirection.arguments.getInt("fragment:requestCode", -1)
         }
         findNavController().navigate(navDirection)
     }

@@ -9,7 +9,7 @@ import androidx.navigation.findNavController
 
 abstract class FragmentResultActivity : AppCompatActivity() {
 
-    private var pendingResults = mutableMapOf<Int, Bundle?>()
+    private var pendingRequests = mutableMapOf<Int, Bundle?>()
 
     private var navHostFragmentIdCache: Int = -1
 
@@ -26,9 +26,9 @@ abstract class FragmentResultActivity : AppCompatActivity() {
 
     private fun attachDestinationChangeListener() {
         destinationChangeListener = NavController.OnDestinationChangedListener { _, _, arguments ->
-            arguments?.getInt("fragment:resultCode", -1)
+            arguments?.getInt("fragment:requestCode", -1)
                 ?.takeIf { it > -1 }
-                ?.also { pendingResults[it] = null }
+                ?.also { pendingRequests[it] = null }
         }.also {
             findNavController(navHostFragmentIdCache).addOnDestinationChangedListener(it)
         }
@@ -39,12 +39,12 @@ abstract class FragmentResultActivity : AppCompatActivity() {
             (supportFragmentManager?.findFragmentById(navHostFragmentIdCache)
                 ?.childFragmentManager
                 ?.primaryNavigationFragment as? BundleFragment)
-                ?.takeIf { it.pendingResult > -1 }
-                ?.takeIf { pendingResults[it.pendingResult] != null }
+                ?.takeIf { it.pendingRequest > -1 }
+                ?.takeIf { pendingRequests[it.pendingRequest] != null }
                 ?.also {
-                    it.onFragmentResult(it.pendingResult, pendingResults[it.pendingResult]!!)
+                    it.onFragmentResult(it.pendingRequest, pendingRequests[it.pendingRequest]!!)
                 }
-                ?.also { pendingResults[it.pendingResult] = null }
+                ?.also { pendingRequests[it.pendingRequest] = null }
         }.also {
             supportFragmentManager?.findFragmentById(navHostFragmentIdCache)
                 ?.childFragmentManager
@@ -52,8 +52,8 @@ abstract class FragmentResultActivity : AppCompatActivity() {
         }
     }
 
-    fun setBundle(resultCode: Int, bundle: Bundle) {
-        pendingResults[resultCode] = bundle
+    fun setBundle(requestCode: Int, bundle: Bundle) {
+        pendingRequests[requestCode] = bundle
     }
 
     fun updateNavHostFragmentId(@IdRes id: Int) {
