@@ -52,7 +52,7 @@ abstract class FragmentResultActivity : AppCompatActivity() {
         }
     }
 
-    fun setBundle(requestCode: Int, bundle: Bundle) {
+    internal fun setBundle(requestCode: Int, bundle: Bundle) {
         pendingRequests[requestCode] = bundle
     }
 
