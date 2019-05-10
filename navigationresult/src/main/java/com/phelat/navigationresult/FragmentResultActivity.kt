@@ -5,6 +5,9 @@ import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
+import androidx.navigation.NavDirections
+import androidx.navigation.NavOptions
+import androidx.navigation.Navigator
 import androidx.navigation.findNavController
 
 abstract class FragmentResultActivity : AppCompatActivity() {
@@ -54,6 +57,56 @@ abstract class FragmentResultActivity : AppCompatActivity() {
 
     internal fun setBundle(requestCode: Int, bundle: Bundle) {
         pendingRequests[requestCode] = bundle
+    }
+
+    fun navigate(navDirection: NavDirections, requestCode: Int = -1) {
+        navigate(navDirection.actionId, navDirection.arguments, requestCode)
+    }
+
+    fun navigate(
+        navDirection: NavDirections,
+        navOptions: NavOptions?,
+        requestCode: Int = -1
+    ) {
+        navigate(navDirection.actionId, navDirection.arguments, navOptions, null, requestCode)
+    }
+
+    fun navigate(
+        navDirection: NavDirections,
+        navigatorExtras: Navigator.Extras?,
+        requestCode: Int = -1
+    ) {
+        navigate(navDirection.actionId, navDirection.arguments, null, navigatorExtras, requestCode)
+    }
+
+    fun navigate(@IdRes navDirection: Int, requestCode: Int) {
+        navigate(navDirection, null, requestCode)
+    }
+
+    fun navigate(@IdRes navDirection: Int, bundle: Bundle?, requestCode: Int) {
+        navigate(navDirection, bundle, null, requestCode)
+    }
+
+    fun navigate(
+        @IdRes navDirection: Int,
+        bundle: Bundle?,
+        navOptions: NavOptions?,
+        requestCode: Int
+    ) {
+        navigate(navDirection, bundle, navOptions, null, requestCode)
+    }
+
+    fun navigate(
+        @IdRes navDirection: Int,
+        bundle: Bundle?,
+        navOptions: NavOptions?,
+        navigatorExtras: Navigator.Extras?,
+        requestCode: Int
+    ) {
+        (supportFragmentManager?.findFragmentById(getNavHostFragmentId())
+            ?.childFragmentManager
+            ?.primaryNavigationFragment as? BundleFragment)
+            ?.navigate(navDirection, bundle, navOptions, navigatorExtras, requestCode)
     }
 
     fun updateNavHostFragmentId(@IdRes id: Int) {
