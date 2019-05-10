@@ -24,7 +24,9 @@ abstract class BundleFragment : Fragment() {
 
     fun navigate(@IdRes navDirection: Int, requestCode: Int) {
         pendingRequest = requestCode
-        findNavController().navigate(navDirection)
+        findNavController().navigate(navDirection, Bundle().apply {
+            putInt(Constants.FRAGMENT_REQUEST_CODE, requestCode)
+        })
     }
 
 }
