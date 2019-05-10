@@ -26,7 +26,7 @@ abstract class FragmentResultActivity : AppCompatActivity() {
 
     private fun attachDestinationChangeListener() {
         destinationChangeListener = NavController.OnDestinationChangedListener { _, _, arguments ->
-            arguments?.getInt("fragment:requestCode", -1)
+            arguments?.getInt(Constants.FRAGMENT_REQUEST_CODE, -1)
                 ?.takeIf { it > -1 }
                 ?.also { pendingRequests[it] = null }
         }.also {

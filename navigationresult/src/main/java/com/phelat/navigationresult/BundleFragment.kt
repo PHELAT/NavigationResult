@@ -14,10 +14,10 @@ abstract class BundleFragment : Fragment() {
 
     fun navigate(navDirection: NavDirections, requestCode: Int = -1) {
         pendingRequest = if (requestCode > -1) {
-            navDirection.arguments.putInt("fragment:requestCode", requestCode)
+            navDirection.arguments.putInt(Constants.FRAGMENT_REQUEST_CODE, requestCode)
             requestCode
         } else {
-            navDirection.arguments.getInt("fragment:requestCode", -1)
+            navDirection.arguments.getInt(Constants.FRAGMENT_REQUEST_CODE, -1)
         }
         findNavController().navigate(navDirection)
     }
