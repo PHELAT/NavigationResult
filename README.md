@@ -9,15 +9,15 @@ class FragmentA : BundleFragment() {
 ```
 2. Navigate to destination fragment using `navigate` function:
 ```kotlin
-navigate(FragmentADirections.fragmentAToFragmentB(), RESULT_CODE)
-// OR
-navigate(R.id.fragmentAToFragmentB, RESULT_CODE)
+navigate(FragmentADirections.fragmentAToFragmentB(), REQUEST_CODE)
+// If you aren't using SafeArgs plugin, you can navigate with direction id
+navigate(R.id.fragmentAToFragmentB, REQUEST_CODE)
 ```
 3. Override `onFragmentResult` in your starting point fragment:
 ```kotlin
 class FragmentA : BundleFragment() {
 
-    override fun onFragmentResult(resultCode: Int, bundle: Bundle) {
+    override fun onFragmentResult(requestCode: Int, bundle: Bundle) {
         // Do whatever you want with result bundle from the destination fragment
     }
     
@@ -25,7 +25,7 @@ class FragmentA : BundleFragment() {
 ```
 4. In your destination fragment use `navigateUp` extension function:
 ```kotlin
-navigateUp(RESULT_CODE, Bundle().apply {
+navigateUp(REQUEST_CODE, Bundle().apply {
     putBoolean("isLoginSuccessful", true)
 })
 ```
@@ -39,9 +39,9 @@ class MainActivity : FragmentResultActivity() {
 ## Two ways for defining result code
 1. You can pass result code through `navigate` function:
 ```kotlin
-navigate(FragmentADirections.fragmentAToFragmentB(), RESULT_CODE)
+navigate(FragmentADirections.fragmentAToFragmentB(), REQUEST_CODE)
 // OR
-navigate(R.id.fragmentAToFragmentB, RESULT_CODE)
+navigate(R.id.fragmentAToFragmentB, REQUEST_CODE)
 ```
 2. You can also set result code in your navigation graph xml file:
 ```xml
@@ -52,18 +52,18 @@ navigate(R.id.fragmentAToFragmentB, RESULT_CODE)
         android:id="@+id/a_to_b"
         app:destination="@id/fragment_b">
         <argument
-            android:name="fragment:resultCode"
+            android:name="fragment:requestCode"
             android:defaultValue="1000"
             app:argType="integer" />
     </action>
 </fragment>
 ```
-If you don't want to set default value for `fragment:resultCode`:
+If you don't want to set default value for `fragment:requestCode`:
 ```kotlin
 navigate(FragmentADirections.fragmentAToFragmentB(10000))
 // OR
 navigate(R.id.fragmentAToFragmentB, Bundle().apply {
-    putInt("fragment:resultCode", 1000)
+    putInt("fragment:requestCode", 1000)
 })
 ```
 ## Update NavHostFragment's id
