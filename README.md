@@ -72,6 +72,8 @@ You can update NavHostFragment's id at runtime using `updateNavHostFragmentId`:
 // This function is only available for FragmentResultActivity
 updateNavHostFragmentId(R.id.anotherNavHostFragment)
 ```
+## Navigate with `requestCode` from FragmentResultActivity
+You can navigate with requestCode as you would do from BundleFragment also from FragmentResultActivity.
 ## Sample
 You can checkout the sample project for NavigationResult from [here](https://github.com/PHELAT/NavigationResult/tree/master/app)
 ## Dependency
