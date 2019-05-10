@@ -1,6 +1,7 @@
 package com.phelat.navigationresult
 
 import android.os.Bundle
+import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
@@ -18,6 +19,11 @@ abstract class BundleFragment : Fragment() {
         } else {
             navDirection.arguments.getInt("fragment:requestCode", -1)
         }
+        findNavController().navigate(navDirection)
+    }
+
+    fun navigate(@IdRes navDirection: Int, requestCode: Int) {
+        pendingRequest = requestCode
         findNavController().navigate(navDirection)
     }
 
