@@ -15,8 +15,23 @@ abstract class BundleFragment : Fragment() {
     open fun onFragmentResult(requestCode: Int, bundle: Bundle) {}
 
     fun navigate(navDirection: NavDirections, requestCode: Int = -1) {
-        extractPendingRequest(navDirection.arguments, requestCode)
-        findNavController().navigate(navDirection)
+        navigate(navDirection.actionId, navDirection.arguments, requestCode)
+    }
+
+    fun navigate(
+        navDirection: NavDirections,
+        navOptions: NavOptions?,
+        requestCode: Int = -1
+    ) {
+        navigate(navDirection.actionId, navDirection.arguments, navOptions, null, requestCode)
+    }
+
+    fun navigate(
+        navDirection: NavDirections,
+        navigatorExtras: Navigator.Extras?,
+        requestCode: Int = -1
+    ) {
+        navigate(navDirection.actionId, navDirection.arguments, null, navigatorExtras, requestCode)
     }
 
     fun navigate(@IdRes navDirection: Int, requestCode: Int) {
