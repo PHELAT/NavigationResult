@@ -12,6 +12,11 @@ abstract class BundleFragment : Fragment() {
 
     internal var pendingRequest: Int = -1
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        pendingRequest = savedInstanceState?.getInt(PENDING_REQUEST, -1) ?: -1
+    }
+
     open fun onFragmentResult(requestCode: Int, bundle: Bundle) {}
 
     fun navigate(navDirection: NavDirections, requestCode: Int = -1) {
@@ -70,6 +75,15 @@ abstract class BundleFragment : Fragment() {
         } else {
             bundle.getInt(Constants.FRAGMENT_REQUEST_CODE, -1)
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(PENDING_REQUEST, pendingRequest)
+    }
+
+    companion object {
+        private const val PENDING_REQUEST = "pending_request"
     }
 
 }

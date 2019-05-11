@@ -12,13 +12,19 @@ import androidx.navigation.findNavController
 
 abstract class FragmentResultActivity : AppCompatActivity() {
 
-    private var pendingRequests = mutableMapOf<Int, Bundle?>()
+    private var pendingRequests = HashMap<Int, Bundle?>()
 
     private var navHostFragmentIdCache: Int = -1
 
     private var backStackChangeListener: FragmentManager.OnBackStackChangedListener? = null
 
     private var destinationChangeListener: NavController.OnDestinationChangedListener? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        (savedInstanceState?.getSerializable(PENDING_REQUESTS) as? HashMap<Int, Bundle?>)
+            ?.let { pendingRequests = it }
+    }
 
     override fun onStart() {
         super.onStart()
@@ -141,7 +147,16 @@ abstract class FragmentResultActivity : AppCompatActivity() {
         }
     }
 
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        outState?.putSerializable(PENDING_REQUESTS, pendingRequests)
+    }
+
     @IdRes
     abstract fun getNavHostFragmentId(): Int
+
+    companion object {
+        private const val PENDING_REQUESTS = "pending_requests"
+    }
 
 }
