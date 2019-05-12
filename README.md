@@ -36,7 +36,7 @@ class MainActivity : FragmentResultActivity() {
     override fun getNavHostFragmentId(): Int = R.id.nav_host_fragment
 }
 ```
-## Two ways for defining result code
+## Two ways for defining request code
 1. You can pass result code through `navigate` function:
 ```kotlin
 navigate(FragmentADirections.fragmentAToFragmentB(), REQUEST_CODE)
@@ -67,13 +67,13 @@ navigate(R.id.fragmentAToFragmentB, Bundle().apply {
 })
 ```
 ## Update NavHostFragment's id
-You can update NavHostFragment's id at runtime using `updateNavHostFragmentId`:
+You can update NavHostFragment's id at runtime using `updateNavHostFragmentId` function:
 ```kotlin
 // This function is only available for FragmentResultActivity
 updateNavHostFragmentId(R.id.anotherNavHostFragment)
 ```
-## Navigate with `requestCode` from FragmentResultActivity
-You can navigate with requestCode as you would do from BundleFragment also from FragmentResultActivity.
+## Navigate with request code from FragmentResultActivity
+You can navigate with request code from FragmentResultActivity as you would do using BundleFragment.
 ## Sample
 You can checkout the sample project for NavigationResult from [here](https://github.com/PHELAT/NavigationResult/tree/master/app)
 ## Dependency
