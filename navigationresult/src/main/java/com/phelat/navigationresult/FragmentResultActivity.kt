@@ -147,9 +147,9 @@ abstract class FragmentResultActivity : AppCompatActivity() {
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle?) {
+    override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState?.putSerializable(PENDING_REQUESTS, pendingRequests)
+        outState.putSerializable(PENDING_REQUESTS, pendingRequests)
     }
 
     @IdRes
