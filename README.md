@@ -79,6 +79,6 @@ You can checkout the sample project for NavigationResult from [here](https://git
 ## Dependency
 ```groovy
 dependencies {
-    implementation "com.phelat:navigationresult:1.0.0-alpha3"
+    implementation "com.phelat:navigationresult:1.0.0-alpha4"
 }
 ```
