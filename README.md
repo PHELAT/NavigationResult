@@ -43,7 +43,7 @@ navigate(FragmentADirections.fragmentAToFragmentB(), REQUEST_CODE)
 // OR
 navigate(R.id.fragmentAToFragmentB, REQUEST_CODE)
 ```
-2. You can also set result code in your navigation graph xml file:
+2. You can also set request code in your navigation graph xml file:
 ```xml
 <fragment
     android:id="@+id/fragment_a"
