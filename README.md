@@ -37,7 +37,7 @@ class MainActivity : FragmentResultActivity() {
 }
 ```
 ## Two ways for defining request code
-1. You can pass result code through `navigate` function:
+1. You can pass request code through `navigate` function:
 ```kotlin
 navigate(FragmentADirections.fragmentAToFragmentB(), REQUEST_CODE)
 // OR
