@@ -28,8 +28,8 @@ dependencies {
 
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    implementation "androidx.navigation:navigation-fragment-ktx:2.0.0"
-    implementation "androidx.navigation:navigation-ui-ktx:2.0.0"
+    implementation "androidx.navigation:navigation-fragment-ktx:2.1.0"
+    implementation "androidx.navigation:navigation-ui-ktx:2.1.0"
 
 }
 
