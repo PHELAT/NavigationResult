@@ -37,13 +37,13 @@ class MainActivity : FragmentResultActivity() {
 }
 ```
 ## Two ways for defining request code
-1. You can pass result code through `navigate` function:
+1. You can pass request code through `navigate` function:
 ```kotlin
 navigate(FragmentADirections.fragmentAToFragmentB(), REQUEST_CODE)
 // OR
 navigate(R.id.fragmentAToFragmentB, REQUEST_CODE)
 ```
-2. You can also set result code in your navigation graph xml file:
+2. You can also set request code in your navigation graph xml file:
 ```xml
 <fragment
     android:id="@+id/fragment_a"
@@ -79,6 +79,6 @@ You can checkout the sample project for NavigationResult from [here](https://git
 ## Dependency
 ```groovy
 dependencies {
-    implementation "com.phelat:navigationresult:1.0.0-alpha3"
+    implementation "com.phelat:navigationresult:1.0.0-alpha4"
 }
 ```
