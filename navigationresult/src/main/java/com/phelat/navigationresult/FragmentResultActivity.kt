@@ -45,7 +45,7 @@ abstract class FragmentResultActivity : AppCompatActivity() {
 
     private fun attachBackStackChangeListener() {
         backStackChangeListener = FragmentManager.OnBackStackChangedListener {
-            (supportFragmentManager?.findFragmentById(navHostFragmentIdCache)
+            (supportFragmentManager.findFragmentById(navHostFragmentIdCache)
                 ?.childFragmentManager
                 ?.primaryNavigationFragment as? BundleFragment)
                 ?.takeIf { it.pendingRequest > -1 }
@@ -55,7 +55,7 @@ abstract class FragmentResultActivity : AppCompatActivity() {
                 }
                 ?.also { pendingRequests.remove(it.pendingRequest) }
         }.also {
-            supportFragmentManager?.findFragmentById(navHostFragmentIdCache)
+            supportFragmentManager.findFragmentById(navHostFragmentIdCache)
                 ?.childFragmentManager
                 ?.addOnBackStackChangedListener(it)
         }
@@ -109,7 +109,7 @@ abstract class FragmentResultActivity : AppCompatActivity() {
         navigatorExtras: Navigator.Extras?,
         requestCode: Int
     ) {
-        (supportFragmentManager?.findFragmentById(getNavHostFragmentId())
+        (supportFragmentManager.findFragmentById(getNavHostFragmentId())
             ?.childFragmentManager
             ?.primaryNavigationFragment as? BundleFragment)
             ?.navigate(navDirection, bundle, navOptions, navigatorExtras, requestCode)
@@ -135,7 +135,7 @@ abstract class FragmentResultActivity : AppCompatActivity() {
 
     private fun detachBackStackChangeListener() {
         backStackChangeListener?.let {
-            supportFragmentManager?.findFragmentById(navHostFragmentIdCache)
+            supportFragmentManager.findFragmentById(navHostFragmentIdCache)
                 ?.childFragmentManager
                 ?.removeOnBackStackChangedListener(it)
         }
