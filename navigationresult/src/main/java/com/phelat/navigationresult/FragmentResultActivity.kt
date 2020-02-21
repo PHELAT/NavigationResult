@@ -5,6 +5,7 @@ import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigator
@@ -20,6 +21,8 @@ abstract class FragmentResultActivity : AppCompatActivity() {
 
     private var destinationChangeListener: NavController.OnDestinationChangedListener? = null
 
+    private var wasPreviouslyShowingDialog = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (savedInstanceState?.getSerializable(PENDING_REQUESTS) as? HashMap<Int, Bundle?>)
@@ -34,12 +37,22 @@ abstract class FragmentResultActivity : AppCompatActivity() {
     }
 
     private fun attachDestinationChangeListener() {
-        destinationChangeListener = NavController.OnDestinationChangedListener { _, _, arguments ->
+        destinationChangeListener = NavController.OnDestinationChangedListener { _, destination, arguments ->
+            checkForDialogStackChange(destination)
             arguments?.getInt(Constants.FRAGMENT_REQUEST_CODE, -1)
                 ?.takeIf { it > -1 }
                 ?.also { pendingRequests[it] = null }
         }.also {
             findNavController(navHostFragmentIdCache).addOnDestinationChangedListener(it)
+        }
+    }
+
+    private fun checkForDialogStackChange(destination: NavDestination) {
+        if (destination.navigatorName == DIALOG_NAVIGATOR) {
+            wasPreviouslyShowingDialog = true
+        } else if (destination.navigatorName == FRAGMENT_NAVIGATOR && wasPreviouslyShowingDialog) {
+            wasPreviouslyShowingDialog = false
+            backStackChangeListener?.onBackStackChanged()
         }
     }
 
@@ -157,6 +170,7 @@ abstract class FragmentResultActivity : AppCompatActivity() {
 
     companion object {
         private const val PENDING_REQUESTS = "pending_requests"
+        private const val DIALOG_NAVIGATOR = "dialog"
+        private const val FRAGMENT_NAVIGATOR = "fragment"
     }
-
 }

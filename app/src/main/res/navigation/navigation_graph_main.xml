@@ -18,6 +18,9 @@
         <action
             android:id="@+id/intro_to_register"
             app:destination="@id/register_fragment" />
+        <action
+            android:id="@+id/intro_to_change_name"
+            app:destination="@id/change_name_dialog_fragment" />
     </fragment>
 
     <fragment
@@ -27,5 +30,9 @@
     <fragment
         android:id="@+id/register_fragment"
         android:name="com.phelat.navigationresultsample.RegisterFragment" />
+
+    <dialog
+        android:id="@+id/change_name_dialog_fragment"
+        android:name="com.phelat.navigationresultsample.ChangeNameDialog" />
 
 </navigation>
