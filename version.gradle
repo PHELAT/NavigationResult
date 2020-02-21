@@ -7,5 +7,5 @@ ext {
             navigation: '2.2.1'
     ]
 
-    navigation_version = '1.0.0-beta01'
+    navigation_version = '1.0.0-beta02'
 }
