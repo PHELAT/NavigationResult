@@ -1,19 +1,26 @@
 # NavigationResult [![](https://api.bintray.com/packages/m4hdi/NavigationResult/NavigationResult/images/download.svg)](https://bintray.com/beta/#/m4hdi/NavigationResult?tab=packages)
-```startActivityForResult``` but for fragments! (Addon for Jetpack's [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started))
+```startActivityForResult``` but for fragments! (Addon for Jetpack's [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started))  
+🗒 You can read a blog post about this library from [here](https://android.jlelse.eu/navigateup-with-bundle-c595ff6d91ba).
 ## How to use
-1. Extend your starting point fragment from `BundleFragment`
+1. Add the library dependency into your `build.gradle` file:
+```groovy
+dependencies {
+    implementation "com.phelat:navigationresult:[latest_version]"
+}
+```
+2. Extend your starting point fragment from `BundleFragment`
 ```kotlin
 class FragmentA : BundleFragment() {
     ...
 }
 ```
-2. Navigate to destination fragment using `navigate` function:
+3. Navigate to destination fragment using `navigate` function:
 ```kotlin
 navigate(FragmentADirections.fragmentAToFragmentB(), REQUEST_CODE)
 // If you aren't using SafeArgs plugin, you can navigate with direction id
 navigate(R.id.fragmentAToFragmentB, REQUEST_CODE)
 ```
-3. Override `onFragmentResult` in your starting point fragment:
+4. Override `onFragmentResult` in your starting point fragment:
 ```kotlin
 class FragmentA : BundleFragment() {
 
@@ -23,13 +30,13 @@ class FragmentA : BundleFragment() {
     
 }
 ```
-4. In your destination fragment use `navigateUp` extension function:
+5. In your destination fragment use `navigateUp` extension function:
 ```kotlin
 navigateUp(REQUEST_CODE, Bundle().apply {
     putBoolean("isLoginSuccessful", true)
 })
 ```
-5. Extend your activity from `FragmentResultActivity`:
+6. Extend your activity from `FragmentResultActivity`:
 ```kotlin
 class MainActivity : FragmentResultActivity() {
     // Return the id of your NavHostFragment
@@ -78,9 +85,3 @@ You can navigate with request code from FragmentResultActivity as you would do u
 This library does support `<dialog/>` destinations and you can use them normally without doing anything extra.
 ## Sample
 You can checkout the sample project for NavigationResult from [here](https://github.com/PHELAT/NavigationResult/tree/master/app)
-## Dependency
-```groovy
-dependencies {
-    implementation "com.phelat:navigationresult:1.0.0-beta02"
-}
-```
