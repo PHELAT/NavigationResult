@@ -1,8 +1,8 @@
 # NavigationResult [![](https://api.bintray.com/packages/m4hdi/NavigationResult/NavigationResult/images/download.svg)](https://bintray.com/beta/#/m4hdi/NavigationResult?tab=packages)
-```startActivityForResult``` but for fragments! (Addon for Jetpack's [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started))  
+```startActivityForResult``` but for fragments! (Addon for Jetpack's [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started)).  
 🗒 You can read a blog post about this library from [here](https://android.jlelse.eu/navigateup-with-bundle-c595ff6d91ba).
 ## How to use
-1. Add the library dependency into your `build.gradle` file:
+1. Add NavigationResult's dependency into your `build.gradle` file:
 ```groovy
 dependencies {
     implementation "com.phelat:navigationresult:[latest_version]"
