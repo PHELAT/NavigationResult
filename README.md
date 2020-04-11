@@ -74,6 +74,8 @@ updateNavHostFragmentId(R.id.anotherNavHostFragment)
 ```
 ## Navigate with request code from FragmentResultActivity
 You can navigate with request code from FragmentResultActivity as you would do using BundleFragment.
+## Navigate up from `<dialog/>` destinations
+This library does support `<dialog/>` destinations and you can use them normally without doing anything extra.
 ## Sample
 You can checkout the sample project for NavigationResult from [here](https://github.com/PHELAT/NavigationResult/tree/master/app)
 ## Dependency
