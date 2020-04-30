@@ -39,6 +39,17 @@
             android:layout_height="wrap_content"
             android:text="@string/general_change_name_text" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/general_or_text" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/tripleFragments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/general_triple_text" />
+
     </LinearLayout>
 
     <RelativeLayout

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.phelat.navigationresult.BundleFragment
 import kotlinx.android.synthetic.main.intro_fragment.*
 
@@ -25,6 +26,9 @@ class IntroFragment : BundleFragment() {
         }
         changeNameButton.setOnClickListener {
             navigate(IntroFragmentDirections.introToChangeName(), CHANGE_NAME_REQUEST_CODE)
+        }
+        tripleFragments.setOnClickListener {
+            findNavController().navigate(R.id.fragment_a)
         }
     }
 

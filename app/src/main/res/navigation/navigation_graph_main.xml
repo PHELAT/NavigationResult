@@ -35,4 +35,24 @@
         android:id="@+id/change_name_dialog_fragment"
         android:name="com.phelat.navigationresultsample.ChangeNameDialog" />
 
+    <fragment
+        android:id="@+id/fragment_a"
+        android:name="com.phelat.navigationresultsample.FragmentA">
+        <action
+            android:id="@+id/fragmentA_to_fragmentB"
+            app:destination="@id/fragment_b" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_b"
+        android:name="com.phelat.navigationresultsample.FragmentB">
+        <action
+            android:id="@+id/fragmentB_to_fragmentC"
+            app:destination="@id/fragment_c" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_c"
+        android:name="com.phelat.navigationresultsample.FragmentC" />
+
 </navigation>
